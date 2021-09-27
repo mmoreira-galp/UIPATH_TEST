@@ -37,11 +37,11 @@ pipeline {
 	            steps {
 	                echo "Building..with ${WORKSPACE}"
 	                UiPathPack (
-	                      outputPath: '${WORKSPACE}\\Output',
-	                      projectJsonPath: '${WORKSPACE}',
+	                      outputPath: "Output\\${env.BUILD_NUMBER}",
+	                      projectJsonPath: "project.json",
 	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
 	                      useOrchestrator: false,
-						  traceLevel: 'Verbose'
+						  traceLoggingLevel: 'None'
 	        )
 	            }
 	        }
@@ -65,8 +65,8 @@ pipeline {
 	                environments: 'DEV',
 	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
-					traceLevel: 'None',
-					entryPointPaths:'Main.xaml'
+					traceLoggingLevel: 'None',
+					entryPointPaths:'Main.xaml
 
 	
 
