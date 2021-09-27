@@ -1,6 +1,6 @@
 pipeline {
 	    agent any
-	
+
 
 	        // Environment Variables
 	        environment {
@@ -12,10 +12,10 @@ pipeline {
 	        UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
 	        UIPATH_ORCH_FOLDER_NAME = "Shared"
 	    }
-	
+
 
 	    stages {
-	
+
 
 	        // Printing Basic Information
 	        stage('Preparing'){
@@ -26,11 +26,11 @@ pipeline {
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
 	                echo "GitHub BranhName ${env.BRANCH_NAME}"
 	                checkout scm
-	
+
 
 	            }
 	        }
-	
+
 
 	         // Build Stages
 	        stage('Build') {
@@ -50,9 +50,18 @@ pipeline {
 	        stage('Test') {
 	            steps {
 	                echo 'Testing..the workflow...'
+									UiPathTest (
+									folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+									orchestratorAddress: "${UIPATH_ORCH_URL}",
+									orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+									parametersFilePath: '',
+									testResultsOutputPath: "result.xml",
+									testTarget: TestProject(environments: 'DEV', testProjectPath: 'project.json'),
+									traceLevel: 'Verbose'
+									)
 	            }
 	        }
-	
+
 
 	         // Deploy Stages
 	        stage('Deploy to UAT') {
@@ -65,18 +74,18 @@ pipeline {
 	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 	                environments: 'DEV',
 	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
-	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
+	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
 					traceLevel: 'Verbose',
 					entryPointPaths:'Main.xaml'
 
-	
+
 
 	        )
 	            }
 	        }
-	
 
-	
+
+
 
 	         // Deploy to Production Step
 	        stage('Deploy to Production') {
@@ -85,7 +94,7 @@ pipeline {
 	                }
 	            }
 	    }
-	
+
 
 	    // Options
 	    options {
@@ -93,11 +102,11 @@ pipeline {
 	        timeout(time:80, unit:'MINUTES')
 	        skipDefaultCheckout()
 	    }
-	
 
-	
 
-	    // 
+
+
+	    //
 	    post {
 	        success {
 	            echo 'Deployment has been completed!'
@@ -110,6 +119,6 @@ pipeline {
 	            cleanWs()
 	        }
 	    }
-	
+
 
 	}
