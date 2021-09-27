@@ -10,7 +10,7 @@ pipeline {
 	        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
 	        UIPATH_ORCH_LOGICAL_NAME = "galpgrcnqhh"
 	        UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
-	        UIPATH_ORCH_FOLDER_NAME = "Default"
+	        UIPATH_ORCH_FOLDER_NAME = "Shared"
 	    }
 	
 
@@ -56,7 +56,7 @@ pipeline {
 	         // Deploy Stages
 	        stage('Deploy to UAT') {
 	            steps {
-	                echo "Deploying ${BRANCH_NAME} to UAT "
+	                echo "Deploying to UAT "
 	                UiPathDeploy (
 	                packagePath: "Output\\${env.BUILD_NUMBER}",
 	                orchestratorAddress: "${UIPATH_ORCH_URL}",
