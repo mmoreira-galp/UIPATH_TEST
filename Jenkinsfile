@@ -59,7 +59,7 @@ pipeline {
 									testTarget: [$class: 'TestSetEntry', testSet: "AnnounceFavouriteSinger_Tests"],
 									traceLevel: 'Verbose',
 									credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-									timeout: "10000"
+									timeout: 10000
 									)
 	            }
 	        }
