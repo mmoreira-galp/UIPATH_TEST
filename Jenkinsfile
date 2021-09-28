@@ -54,7 +54,7 @@ pipeline {
 									folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 									orchestratorAddress: "${UIPATH_ORCH_URL}",
 									orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-								//	parametersFilePath: '',
+									parametersFilePath: '',
 									testResultsOutputPath: "result.xml",
 									testTarget: [$class: 'TestSetEntry', testSet: "AnnounceFavouriteSinger_Tests"],
 									traceLevel: 'Verbose',
