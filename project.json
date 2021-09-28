@@ -6,7 +6,7 @@
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.System.Activities": "[20.10.1]",
-    "UiPath.Testing.Activities": "[1.3.2]",
+    "UiPath.Testing.Activities": "[1.4.1-preview]",
     "UiPath.UIAutomation.Activities": "[20.10.6]"
   },
   "webServices": [],
@@ -15,6 +15,7 @@
   "studioVersion": "20.10.2.0",
   "projectVersion": "1.0.4",
   "runtimeOptions": {
+    "exceptionHandlerWorkflow": "Test_FavoriteSinger.xaml",
     "autoDispose": false,
     "isPausable": true,
     "requiresUserInteraction": true,
