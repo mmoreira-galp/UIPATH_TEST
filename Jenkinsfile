@@ -41,9 +41,9 @@ pipeline {
 	                      projectJsonPath: "project.json",
 	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
 	                      useOrchestrator: false,
-						  traceLevel: 'Verbose',
-						  runWorkflowAnalysis: true
-	        )
+						  					traceLevel: 'Verbose',
+						  					runWorkflowAnalysis: false
+	        				)
 	            }
 	        }
 	         // Test Stages
@@ -77,12 +77,10 @@ pipeline {
 	                environments: 'DEV',
 	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-					traceLevel: 'Verbose',
-					entryPointPaths:'Main.xaml'
+									traceLevel: 'Verbose',
+									entryPointPaths:'Main.xaml'
 
-
-
-	        )
+	        				)
 	            }
 	        }
 
