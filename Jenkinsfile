@@ -56,7 +56,7 @@ pipeline {
 									orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
 									parametersFilePath: '',
 									testResultsOutputPath: "result.xml",
-									testTarget: TestProject(environments: 'DEV', testProjectPath: 'project.json'),
+									testTarget: [$class: 'TestSetEntry', testSet: "AnnounceFavouriteSinger_Tests"],
 									traceLevel: 'Verbose'
 									)
 	            }
