@@ -63,7 +63,7 @@ pipeline {
 	                environments: 'DEV',
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
 					traceLevel: 'Verbose',
-					entryPointPaths:'src\\Main.xaml'
+					entryPointPaths:'Main.xaml'
 
 	
 
