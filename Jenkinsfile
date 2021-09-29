@@ -1,6 +1,5 @@
 pipeline {
 	    agent any
-	
 
 	        // Environment Variables
 	        environment {
@@ -26,8 +25,6 @@ pipeline {
 	                echo "Jenkins JOB Name ${env.JOB_NAME}"
 	                echo "GitHub BranhName ${env.BRANCH_NAME}"
 	                checkout scm
-	
-
 	            }
 	        }
 	
@@ -38,12 +35,12 @@ pipeline {
 	                echo "Building..with ${WORKSPACE}"
 	                UiPathPack (
 	                      outputPath: "Output\\${env.BUILD_NUMBER}",
-	                      projectJsonPath: "project.json",
+	                      projectJsonPath: "src\\project.json",
 	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
 	                      useOrchestrator: false,
 						  traceLevel: 'Verbose',
 						  runWorkflowAnalysis: true
-	        )
+	        			)
 	            }
 	        }
 	         // Test Stages
@@ -64,10 +61,9 @@ pipeline {
 	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
 	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 	                environments: 'DEV',
-	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
 					traceLevel: 'Verbose',
-					entryPointPaths:'Main.xaml'
+					entryPointPaths:'src\\Main.xaml'
 
 	
 
