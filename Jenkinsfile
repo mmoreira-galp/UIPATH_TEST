@@ -6,10 +6,10 @@ pipeline {
 	        MAJOR = '1'
 	        MINOR = '0'
 	        //Orchestrator Services
-	        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
+	        UIPATH_ORCH_URL = "https://rpa-qua.galp.com/"
 	        UIPATH_ORCH_LOGICAL_NAME = "galpgrcnqhh"
-	        UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
-	        UIPATH_ORCH_FOLDER_NAME = "Shared"
+	        UIPATH_ORCH_TENANT_NAME = "CoC"
+	        UIPATH_ORCH_FOLDER_NAME = "Coc"
 	    }
 	
 
@@ -61,7 +61,8 @@ pipeline {
 	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
 	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 	                environments: 'DEV',
-	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
+	                //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
+					credentials: UserPass('quauipath_user_pass'),
 					traceLevel: 'Verbose',
 					entryPointPaths:'Main.xaml'
 
