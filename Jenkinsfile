@@ -61,8 +61,8 @@ pipeline {
 	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
 	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
 	                environments: 'DEV',
-	                //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'), 
-					credentials: UserPass('quauipath_user_pass'),
+	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'quaUiPathSecret'), 
+					//credentials: UserPass('quauipath_user_pass'),
 					traceLevel: 'Verbose',
 					entryPointPaths:'Main.xaml'
 
