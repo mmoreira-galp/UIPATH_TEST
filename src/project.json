@@ -1,5 +1,6 @@
 {
   "name": "UiPath Jenkins CICD Demo",
+  "jira-galp": "12121212",
   "description": "CICD Demo Process with Jenkins",
   "main": "Main.xaml",
   "dependencies": {
